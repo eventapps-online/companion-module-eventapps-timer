@@ -1,0 +1,28 @@
+{
+	"$schema": "../node_modules/@companion-module/base/assets/manifest.schema.json",
+	"type": "connection",
+	"id": "eventapps-timer",
+	"name": "eventapps-timer",
+	"shortname": "Countdown Timer",
+	"description": "Control EventApps Timer countdown and mirror its display on Stream Deck buttons",
+	"version": "0.0.0",
+	"license": "MIT",
+	"repository": "git+https://github.com/bitfocus/companion-module-eventapps-timer.git",
+	"bugs": "https://github.com/bitfocus/companion-module-eventapps-timer/issues",
+	"maintainers": [
+		{
+			"name": "Jaroslav Bach",
+			"email": "jaroslav.bach.av@gmail.com"
+		}
+	],
+	"runtime": {
+		"type": "node22",
+		"api": "nodejs-ipc",
+		"apiVersion": "0.0.0",
+		"entrypoint": "../dist/main.js"
+	},
+	"legacyIds": [],
+	"manufacturer": "EventApps",
+	"products": ["Countdown Timer"],
+	"keywords": ["timer", "countdown", "stage", "broadcast"]
+}
