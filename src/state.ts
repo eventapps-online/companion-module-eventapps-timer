@@ -17,11 +17,11 @@ export interface TimerState {
 	fg: string // output text colour, "#RRGGBB"
 	setTimeSeconds: number
 	setTimeLabel: string
-	remainingMs: number
+	remainingMs: number // frozen while not running (pause keeps it for resume) - interpret with "running"
 	cueMode: string // "man" | "auto" | "off"
 	cueRepeat: boolean
 	cueSubzero: boolean
-	activeCueId: string
+	activeCueId: string // cue currently in PGM; "" if none or cues off
 	nextCueId: string
 	cues: CueEntry[]
 }
