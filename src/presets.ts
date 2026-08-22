@@ -84,6 +84,20 @@ export function buildPresets(self: TimerInstance): TimerPresets {
 		steps: [{ down: [{ actionId: 'down', options: {} }], up: [] }],
 		feedbacks: [],
 	}
+	presets['plus_sec'] = {
+		type: 'simple',
+		name: '+1 sec',
+		style: { text: '+1 SEC', size: LABEL_SIZE, color: WHITE, bgcolor: DARK, alignment: CENTER },
+		steps: [{ down: [{ actionId: 'upsec', options: {} }], up: [] }],
+		feedbacks: [],
+	}
+	presets['minus_sec'] = {
+		type: 'simple',
+		name: '-1 sec',
+		style: { text: '-1 SEC', size: LABEL_SIZE, color: WHITE, bgcolor: DARK, alignment: CENTER },
+		steps: [{ down: [{ actionId: 'downsec', options: {} }], up: [] }],
+		feedbacks: [],
+	}
 	presets['next_cue'] = {
 		type: 'simple',
 		name: 'Next cue',
@@ -128,6 +142,8 @@ export function buildPresets(self: TimerInstance): TimerPresets {
 				'pause',
 				'plus_min',
 				'minus_min',
+				'plus_sec',
+				'minus_sec',
 				'next_cue',
 			],
 		},

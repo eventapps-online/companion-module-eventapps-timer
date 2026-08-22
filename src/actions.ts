@@ -14,6 +14,8 @@ export type ActionsSchema = {
 	next: { options: NoOptions }
 	up: { options: NoOptions }
 	down: { options: NoOptions }
+	upsec: { options: NoOptions }
+	downsec: { options: NoOptions }
 	settime: { options: { seconds: number } }
 	cue_go: { options: { id: string } }
 }
@@ -38,6 +40,8 @@ export function buildActions(self: TimerInstance): CompanionActionDefinitions<Ac
 		next: { name: 'Next cue', options: [], callback: () => self.send('/next') },
 		up: { name: 'Set time +1 minute', options: [], callback: () => self.send('/up') },
 		down: { name: 'Set time -1 minute', options: [], callback: () => self.send('/down') },
+		upsec: { name: 'Set time +1 second', options: [], callback: () => self.send('/upsec') },
+		downsec: { name: 'Set time -1 second', options: [], callback: () => self.send('/downsec') },
 
 		settime: {
 			name: 'Set the countdown time (seconds)',
