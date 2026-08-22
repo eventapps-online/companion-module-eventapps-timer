@@ -7,6 +7,8 @@ type NoOptions = Record<string, never>
 export type ActionsSchema = {
 	set: { options: NoOptions }
 	start: { options: NoOptions }
+	smart_start: { options: NoOptions }
+	show: { options: NoOptions }
 	pause: { options: NoOptions }
 	clock: { options: NoOptions }
 	next: { options: NoOptions }
@@ -23,6 +25,14 @@ export function buildActions(self: TimerInstance): CompanionActionDefinitions<Ac
 	return {
 		set: { name: 'SET + START (the set time)', options: [], callback: () => self.send('/set') },
 		start: { name: 'START / PAUSE countdown', options: [], callback: () => self.send('/start') },
+		smart_start: {
+			name: 'START / PAUSE / SHOW countdown (follows the state)',
+			options: [],
+			// Clock on the output: just bring the countdown up (a plain /start would start it,
+			// contradicting the SHOW COUNTDOWN caption). Countdown on the output: run/pause toggle.
+			callback: () => self.send(self.state.mode === 'clock' ? '/show' : '/start'),
+		},
+		show: { name: 'Show countdown (without starting)', options: [], callback: () => self.send('/show') },
 		pause: { name: 'PAUSE countdown', options: [], callback: () => self.send('/pause') },
 		clock: { name: 'Show current time (clock)', options: [], callback: () => self.send('/clock') },
 		next: { name: 'Next cue', options: [], callback: () => self.send('/next') },

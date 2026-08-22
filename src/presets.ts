@@ -60,7 +60,7 @@ export function buildPresets(self: TimerInstance): TimerPresets {
 		type: 'simple',
 		name: 'PAUSE/START/SHOW COUNTDOWN (follows the state)',
 		style: { text: `$(${L}:start_label)`, size: 'auto', color: WHITE, bgcolor: DARK, alignment: CENTER },
-		steps: [{ down: [{ actionId: 'start', options: {} }], up: [] }],
+		steps: [{ down: [{ actionId: 'smart_start', options: {} }], up: [] }],
 		feedbacks: [{ feedbackId: 'running', options: {}, style: { bgcolor: GREEN } }],
 	}
 	presets['pause'] = {

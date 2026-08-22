@@ -25,7 +25,9 @@ address to use as **Timer IP**.
 
 ### What it does
 
-- **Actions**: SET + START, START/PAUSE, PAUSE, show the clock, next cue,
+- **Actions**: SET + START, START/PAUSE, a state-following START/PAUSE/SHOW
+  (shows the countdown without starting it when the clock is on the output),
+  show the countdown without starting, PAUSE, show the clock, next cue,
   ±1 minute, set the countdown time in seconds, and start a specific cue
   picked from a dropdown.
 - **Variables**: `time` (the text currently on the output, including speaker
