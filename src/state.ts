@@ -58,8 +58,9 @@ export function listSignature(s: TimerState): string {
 // clock on the output -> SHOW COUNTDOWN (no matter whether it runs underneath),
 // otherwise PAUSE / START COUNTDOWN.
 export function startLabel(s: TimerState): string {
-	if (s.mode === 'clock') return 'SHOW\nCOUNTDOWN'
-	return s.running ? 'PAUSE\nCOUNTDOWN' : 'START\nCOUNTDOWN'
+	// COUNTDOWN split over two lines - on one line it forces a tiny font on 72px buttons
+	if (s.mode === 'clock') return 'SHOW\nCOUNT\nDOWN'
+	return s.running ? 'PAUSE\nCOUNT\nDOWN' : 'START\nCOUNT\nDOWN'
 }
 
 // Choice label for a cue: its name plus the countdown length when they differ
