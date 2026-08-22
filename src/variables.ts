@@ -34,7 +34,9 @@ export function variableValues(self: TimerInstance): Partial<VariablesSchema> {
 	return {
 		time: self.online ? s.display : '--:--:--',
 		set_time: self.online ? s.setTimeLabel : '--:--',
-		start_label: self.online ? startLabel(s) : 'OFFLINE',
+		// Two lines on purpose: 'auto' sizes by total text length, a lone OFFLINE
+		// gets a font too big for 7 characters and wraps (OFFL/INE)
+		start_label: self.online ? startLabel(s) : 'TIMER\nOFFLINE',
 		clock: localClock(),
 	}
 }
