@@ -35,28 +35,31 @@ export function buildPresets(self: TimerInstance): TimerPresets {
 	presets['time_display'] = {
 		type: 'simple',
 		name: 'Output (time + event colours)',
-		style: { text: `OUT\n$(${L}:time)`, size: LABEL_SIZE, color: WHITE, bgcolor: BLACK, alignment: CENTER },
+		// 'auto' = the preset equivalent of "shrink to fit" - a fixed 18 clipped "00:14:37"
+		style: { text: `OUT\n$(${L}:time)`, size: 'auto', color: WHITE, bgcolor: BLACK, alignment: CENTER },
 		steps: [{ down: [], up: [] }],
 		feedbacks: [{ feedbackId: 'timer_colors', options: {} }],
 	}
 	presets['clock_display'] = {
 		type: 'simple',
 		name: 'Clock (press to show the clock on the output)',
-		style: { text: 'CLOCK\n$(internal:time_hms)', size: LABEL_SIZE, color: WHITE, bgcolor: BLACK, alignment: CENTER },
+		// Preset text only supports this module's own variables - $(internal:time_hms)
+		// would import as $NA, hence the module's own "clock" variable.
+		style: { text: `CLOCK\n$(${L}:clock)`, size: 'auto', color: WHITE, bgcolor: BLACK, alignment: CENTER },
 		steps: [{ down: [{ actionId: 'clock', options: {} }], up: [] }],
 		feedbacks: [],
 	}
 	presets['set_start'] = {
 		type: 'simple',
 		name: 'START (the set time)',
-		style: { text: `START\n$(${L}:set_time)`, size: LABEL_SIZE, color: WHITE, bgcolor: RED, alignment: CENTER },
+		style: { text: `START\n$(${L}:set_time)`, size: 'auto', color: WHITE, bgcolor: RED, alignment: CENTER },
 		steps: [{ down: [{ actionId: 'set', options: {} }], up: [] }],
 		feedbacks: [],
 	}
 	presets['start_pause'] = {
 		type: 'simple',
 		name: 'PAUSE/START/SHOW COUNTDOWN (follows the state)',
-		style: { text: `$(${L}:start_label)`, size: '14', color: WHITE, bgcolor: DARK, alignment: CENTER },
+		style: { text: `$(${L}:start_label)`, size: 'auto', color: WHITE, bgcolor: DARK, alignment: CENTER },
 		steps: [{ down: [{ actionId: 'start', options: {} }], up: [] }],
 		feedbacks: [{ feedbackId: 'running', options: {}, style: { bgcolor: GREEN } }],
 	}

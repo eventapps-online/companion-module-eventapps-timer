@@ -29,9 +29,10 @@ address to use as **Timer IP**.
   ±1 minute, set the countdown time in seconds, and start a specific cue
   picked from a dropdown.
 - **Variables**: `time` (the text currently on the output, including speaker
-  messages), `set_time` (the time the next run will start from) and
+  messages), `set_time` (the time the next run will start from),
   `start_label`, which switches between `START COUNTDOWN`, `PAUSE COUNTDOWN`
-  and `SHOW COUNTDOWN` so one button can carry the right caption.
+  and `SHOW COUNTDOWN` so one button can carry the right caption, and `clock`
+  (the local time of day of the machine running Companion).
 - **Feedbacks**: _Output colours_ takes over the background and text colour of
   the output window, so the button turns amber/red with the countdown events;
   plus boolean feedbacks for _countdown is running_ and _output shows the
