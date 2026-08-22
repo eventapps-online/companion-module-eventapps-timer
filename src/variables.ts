@@ -29,10 +29,12 @@ function localClock(): string {
 
 export function variableValues(self: TimerInstance): Partial<VariablesSchema> {
 	const s = self.state
+	// Placeholders while the app is unreachable: with empty variables the buttons
+	// keep only their short caption and the 'auto' size blows it up until it wraps.
 	return {
-		time: self.online ? s.display : '',
-		set_time: self.online ? s.setTimeLabel : '',
-		start_label: startLabel(s),
+		time: self.online ? s.display : '--:--:--',
+		set_time: self.online ? s.setTimeLabel : '--:--',
+		start_label: self.online ? startLabel(s) : 'OFFLINE',
 		clock: localClock(),
 	}
 }
